@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      border-radius: 10px;
+    }
+
+    #container {
+      width: 100%;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #B1B695;
+    }
+
+    #cube-box {
+      width: 500px;
+      height: 500px;
+      background-color: #FCD0A1;
+      box-shadow: 2px 2px 10px gray;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      cursor: pointer;
+    }
+
+    .cube {
+      border: #FCD0A1 5px solid;
+      background: green;
+      width: 50%;
+      height: 50%;
+    }
+
+    .answer {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="container">
+    <div id="cube-box">
+      <!-- <div class="cube answer"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div> -->
+    </div>
+  </section>
+
+  <script>
+    // 畫面上印出 2 * 2 的顏色自訂的方塊
+    // 隨機一個方塊的顏色較透明，表示這是答案
+    // 使用者點擊答案方塊後，跳出提示視窗，告知使用者答對了
+    // 每次答對後，重新產生新的答案方塊再次進行遊戲
+
+    const cubeBox = document.querySelector('#cube-box');
+    level = 2;
+    playTimes = 0; //玩的次數(每個level玩的次數)
+    score = 0;
+    // 產生下一關
+    creatCube();
+
+    function creatCube() {
+      // 會產生四塊, 隨機產生0~3的數字 當答案
+      const randomIndex = Math.floor(Math.random() * 4);
+      let content = '';
+      for (let i = 0; i < level ** 2; i++) {
+        if (i === randomIndex) {
+          content += `<div class="cube answer"></div>`
+        } else {
+          content += `<div class="cube"></div>`
+        }
+      }
+      cubeBox.innerHTML = content;
+
+      // 放入網頁後,網頁上才有這些東西,才有辦法找到小方塊
+      const getChangeColor = changeColor(); // 取得新顏色
+      console.log(getChangeColor);
+      // 找到所有的小方塊
+      const cubeAll = document.querySelectorAll('.cube');
+      let size = 100 / level;
+      console.log(level, size);
+
+      // console.log(cubeAll);
+      // 把每一關的新顏色放上去給每一個小方塊
+      cubeAll.forEach(function (cube) {
+        cube.style.backgroundColor = getChangeColor;
+        cube.style.width = `${size}%`;
+        cube.style.height = `${size}%`;
+      });
+      // 要玩
+      play();
+    }
+
+    function play() {
+      const answerCube = document.querySelector('.answer');
+      answerCube.addEventListener('click', function () {
+        // alert('過關');
+        playTimes++;
+        score += level * playTimes * 1;
+        console.log(score);
+        
+        console.log(playTimes);
+        // 每一關的過關次數 == level才換下一關
+        if (playTimes == level) {
+          // alert('恭喜過關')
+          level++;
+          playTimes = 0;  
+        }
+        creatCube(); //產生下一關  => 遞迴的用法
+      })
+    }
+
+    // 取得新顏色
+    function changeColor() {
+
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      // console.log(`rgb(${r}, ${g}, ${b})`);
+      // 回傳所產生的顏色
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+  </script>
+</body>
+
+</html>

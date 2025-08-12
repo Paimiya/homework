@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            /* background-image: url("https://megapx.dcard.tw/v1/images/39b8eccc-17d9-412d-93b1-1ed6f8f328b1/responsive?width=1280"); */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100vw;
+            height: 100vh;
+            font-size: 16px;
+
+            margin: 0;
+            padding: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #DDE8B9;
+            width: 300px;
+            height: auto;
+            border-radius: 2%;
+            box-shadow: 1px 1px 5px gray;
+
+            padding: 20px;
+            display: flex;
+            /* justify-content: start; */
+            align-items: start;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .subjuct-container {
+            background-color: #E8D2AE;
+            box-shadow: 1px 1px 5px gray;
+            border-radius: 2%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 10px;
+        }
+
+        label {
+            width: atuo;
+        }
+
+        input {
+            width: 150px;
+            border-radius: 2%;
+        }
+
+        button {
+            background-color: #D7B29D;
+            width: 100px;
+            height: 30px;
+            border-radius: 6%;
+            box-shadow: 1px 1px 5px gray;
+        }
+    </style>
+    </head>
+
+    <body>
+        <section class="container">
+            <div class="subjuct-container">
+                <label for="chinese">
+                    國文
+                    <input id="num-1" type="number" value="0" min="0" max="100">
+                </label>
+                <label for="english">
+                    英文
+                    <input id="num-2" type="number" value="0" min="0" max="100">
+                </label>
+                <label for="math">
+                    數學
+                    <input id="num-3" type="number" value="0" min="0" max="100">
+                </label>
+            </div>
+
+            <button type="button">計算結果</button>
+
+            <div>
+                <div>加總： <span id="sum">?</span></div>
+                <div>平均： <span id="result">?</span></div>
+                <br>
+                <div>是否及格: <span id="pass">緊張嗎?</span></div>
+            </div>
+    </body>
+    <!-- ======================JS=================== -->
+    <script>
+        var input1 = document.querySelector('#num-1');
+        var input2 = document.querySelector('#num-2');
+        var input3 = document.querySelector('#num-3');
+        var button = document.querySelector('button');
+        var result = document.querySelector('#result');
+        var sum = document.querySelector('#sum');
+        var pass = document.querySelector('#pass');
+        //=====================相加平均====================
+        button.addEventListener('click', function () {
+            sum.textContent = (Number(input1.value) + Number(input2.value) + Number(input3.value));
+            result.textContent = (Number(input1.value) + Number(input2.value) + Number(input3.value)) / 3;
+            if (result.textContent > 59) {
+                console.log('及格');
+                pass.textContent = '算你好運';
+                document.body.style.backgroundImage = "url('https://rightpuffs.files.wordpress.com/2022/01/line_album_e59089e5a883e5a883e6a297e59c96_220112_9.jpg')";
+            } else {
+                console.log('沒及格');
+                pass.textContent = '明年再來';
+                pass.style.color = 'red';
+                document.body.style.backgroundImage = "url('https://megapx.dcard.tw/v1/images/39b8eccc-17d9-412d-93b1-1ed6f8f328b1/responsive?width=1280')";
+            }
+        });
+
+    </script>
+
+</html>

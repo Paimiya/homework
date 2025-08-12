@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #E2E8C0;
+            font-family: 微軟正黑體;
+            font-weight: 500;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* ==================背景===================== */
+        .container {
+            background-color: #FDE8E9;
+            width: 650px;
+            height: 600px;
+            border-radius: 2%;
+            box-shadow: 2px 2px 10px gray;
+
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: column;
+
+            padding: 50px;
+        }
+
+        /* ==============標題文字字區 ================*/
+        .word-box {
+            background-color: #E3BAC6;
+            width: 600px;
+            /* border-radius: 3%; */
+            box-shadow: 2px 2px 5px gray;
+
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: column;
+
+            margin-bottom: 10px;
+            padding-bottom: 20px;
+        }
+
+        /* ==============標題文字字區 ================*/
+        /* ===============按鈕、輸出區================ */
+        .input-box {
+            background-color: #BC9EC1;
+            width: 600px;
+            height: 200px;
+            /* border-radius: 3%; */
+            box-shadow: 2px 2px 5px gray;
+
+            padding: 10px 30px;
+            margin-bottom: 10px;
+
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            /* flex-direction: ; */
+        }
+
+        .box-t {
+            /* background-color: aqua; */
+            width: 300px;
+            height: 150px;
+
+            /* border: 1px solid black; */
+            /* display: flex; */
+
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        .answer-box {
+            /* background-color: blue; */
+            width: 300px;
+            height: 150px;
+
+            /* border: 1px solid black; */
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            padding: 10px;
+        }
+
+        .calculate {
+            margin: 5px 0px 0;
+        }
+
+        /* ===============按鈕、輸出區================ */
+        /* ==================表格區================== */
+        table {
+            background-color: #AD9BAA;
+            border-collapse: collapse;
+            box-shadow: 1px 1px 1px gray;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            width: 180px;
+        }
+
+        /* ==================表格區================== */
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="word-box">
+            <h1>BMI計算機</h1>
+            <span>身體質量指數(Body Mass Index ， 簡稱BMI)是公認用來估計房胖程度的方法</span>
+            <br>
+            <span>BMI = 體重(公斤) / 身高的平方(公尺)</span>
+        </div>
+        <div class="input-box">
+            <div class="box-t">
+                <div><span>我的身高：</span><input type="number" id="height" v-model="conus.formHeight" placeholder="輸入身高 (公分)" value="" min="0"></div>
+                <div><span>我的體重：</span><input type="number" id="weight" v-model="conus.formWeight" placeholder="輸入體重 (公斤)" value="" min="0"></div>
+                <button @click="btn" class="calculate"><span>計算</span></button>
+                <button class="rewrite"><span>重新填寫</span></button>
+            </div>
+            <div class="answer-box">
+                BMI值:&nbsp;&nbsp;<span class="answer" id="result">{{isBMI}}</span>
+                <br>&nbsp;&nbsp;
+                <span class="range"></span>
+            </div>
+            <!-- BMI值:<div id="answer" type="text" value=""></div> -->
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="3">BMI值</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>男性</th>
+                    <th>女性</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>體重過輕</td>
+                    <td>&lt;20</td>
+                    <td>&lt;19</td>
+                </tr>
+                <tr>
+                    <td>正常範圍</td>
+                    <td>20-25</td>
+                    <td>19-25</td>
+                </tr>
+                <tr>
+                    <td>體重過重</td>
+                    <td>25-30</td>
+                    <td>25-30</td>
+                </tr>
+                <tr>
+                    <td>肥胖</td>
+                    <td>30-40</td>
+                    <td>30-40</td>
+                </tr>
+                <tr>
+                    <td>病態肥胖</td>
+                    <td>&gt;40</td>
+                    <td>&gt;40</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- =============================JS================================ -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue
+        createApp({
+            data() {
+                return {
+                    conus: {
+                        formHeight: '',
+                        formWeight: '',
+                    },
+                    isBMI: '',
+                }
+            },
+            methods: {
+                btn() {
+                    const heightCm = parseFloat(this.conus.formHeight);
+                    const weightKg = parseFloat(this.conus.formWeight);
+
+                    const heightM = heightCm / 100;
+                    const bmi = weightKg / (heightM * heightM)
+                    this.isBMI = bmi.toFixed(2)
+                }
+            }
+        },
+        ).mount('#app')
+    </script>
+    <!-- <script>
+        const height = document.querySelector('#height');
+        const weight = document.querySelector('#weight');
+        const calculate = document.querySelector('.calculate');
+        const rewrite = document.querySelector('.rewrite');
+        const answer = document.querySelector('.answer');
+        const range = document.querySelector('.range');
+
+
+        calculate.addEventListener('click', function () {
+            // const inputHeightValue = Number(inputHeight.value);
+            // const inputHeightValue = inputHeight.value * 1;
+
+            if (!height.value) {
+                alert('請輸入身高');
+                return;
+            };
+
+            if (!weight.value) {
+                alert('請輸入體重');
+                return;
+            };
+
+            answer.textContent = (weight.value / (height.value / 100) ** 2).toFixed(1);
+            // const answerBox = document.querySelector('.answer-box')
+            // answerTextContent = answerTextContent.toFixed(1);
+
+            // e = e.toFixed(1)
+            if (answer.textContent < 20) {
+                range.textContent = ('體重過輕');
+                range.style.color = 'red';
+            };
+
+            if (answer.textContent > 20 && answer.textContent < 25) {
+                range.textContent = ('正常範圍');
+                range.style.color = 'green';
+            };
+
+            if (answer.textContent > 25 && answer.textContent < 30) {
+                range.textContent = ('體重過重');
+                range.style.color = 'red';
+            };
+
+            if (answer.textContent > 30 && answer.textContent < 40) {
+                range.textContent = ('肥胖');
+                range.style.color = 'red';
+            };
+
+            if (answer.textContent > 40) {
+                range.textContent = ('病態肥胖');
+                range.style.color = 'red';
+            };
+        })
+
+        rewrite.addEventListener('click', function () {
+            height.value = '';
+            weight.value = '';
+            range.textContent = ('');
+            answer.textContent = ('');
+        })
+    </script> -->
+</body>
+
+</html>

@@ -1,0 +1,328 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+}
+
+@media (max-width:1200px) {
+  body {
+    flex-direction: column;
+    height: 100vh;
+  }
+}
+
+a {
+  text-decoration: dashed;
+  display: flex;
+}
+
+.nav {
+  background-color: #ACD0D1;
+  width: 380px;
+  height: 100vh;
+  flex-shrink: 0;
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width:1200px) {
+  .nav {
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    align-content: space-between;
+    position: relative;
+  }
+}
+
+.nav-btn-all {
+  /* background-color: blue; */
+  width: 200px;
+  height: 200px;
+}
+
+@media (max-width:1200px) {
+  .nav-btn-all {
+    width: 400px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width:720px) {
+  .nav-btn-all {
+    background-color: #ACD0D1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    width: 180px;
+    height: auto;
+    margin: unset;
+    padding: 30px;
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 0;
+  }
+}
+
+.nav-btn {
+  background-color: #87cdcf;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 10px;
+  font-size: 26px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid white;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width:1200px) {
+  .nav-btn {
+    width: 120px;
+    font-size: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.nav-btn:hover {
+  background-color: #6bcccf;
+  transition: 0.5s;
+}
+
+.logo {
+  background-image: url(../DAY5-HW-02-IMG/ヨルシカlogo.jpg);
+  background-size: cover;
+  background-position: 47% 0px;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width:1200px) {
+  .logo {
+    width: 60px;
+    height: 60px;
+    margin: unset;
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+  }
+}
+
+@media (max-width:720px) {
+  .logo {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.logo:hover {
+  transition: 1s;
+  transform: scale(1.2);
+}
+
+@media (max-width:720px) {
+  .logo:hover {
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}
+
+.container {
+  background-image: url(../DAY5-HW-02-IMG/background-test.jpg);
+  background-size: cover;
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 957px;
+  height: 576px;
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  flex-wrap: wrap;
+}
+
+@media (max-width:1400px) {
+  .content {
+    width: 800px;
+  }
+}
+
+@media (max-width:1200px) {
+  .content {
+    width: 90%;
+    height: 90%;
+  }
+}
+
+@media (max-width:720px) {
+  .content {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.img {
+  background-size: cover;
+  background-position: top;
+  width: calc((100% - 10px * 2) / 3);
+  height: 100%;
+}
+
+@media (max-width:1400px) {
+  .img {
+    height: calc(50% - 5px);
+  }
+}
+
+@media (max-width:720px) {
+  .img {
+    height: calc(100% / 3);
+  }
+}
+
+.img:hover {
+  background-size: cover;
+  transition: 1s;
+}
+
+.img-1 {
+  background-image: url(../DAY5-HW-02-IMG/ただ君に晴れ.jpg);
+  background-position: -330px 0px;
+}
+
+.img-2 {
+  background-image: url(../DAY5-HW-02-IMG/藍二乗.jpg);
+  background-position: -480px 0px;
+}
+
+.img-3 {
+  background-image: url(../DAY5-HW-02-IMG/心に穴が空いた.jpg);
+  background-position: -550px 50%;
+}
+
+@media (max-width:1400px) {
+  .img-1 {
+    background-position: 0px 30%;
+    width: 100%;
+  }
+
+  .img-2,
+  .img-3 {
+    background-position: 80% 30%;
+    width: calc(50% - 5px);
+  }
+}
+
+@media (max-width:720px) {
+
+  .img-2,
+  .img-3 {
+    width: 100%;
+  }
+}
+
+.img-1:hover {
+  background-image: url(../DAY5-HW-02-IMG/ただ君に晴れ-2.jpg);
+  background-size: cover;
+  background-position: 51%;
+}
+
+@media (max-width:1400px) {
+  .img-1:hover {
+    background-position: 30%;
+  }
+}
+
+.img-2:hover {
+  background-image: url(../DAY5-HW-02-IMG/藍二乘-2.jpg);
+}
+
+.img-3:hover {
+  background-image: url(../DAY5-HW-02-IMG/心に穴が空いた-2.jpg);
+}
+
+/* =======漢堡條======= */
+.ham-btn {
+  background-color: #87cdcf;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  display: none;
+  position: absolute;
+  left: 30px;
+}
+
+@media (max-width:720px) {
+  .ham-btn {
+    display: block;
+  }
+}
+
+.ham-btn:hover {
+  background-color: #6bcccf;
+}
+
+.ham-btn:active {
+  background-color: #6bcccf;
+}
+
+.line {
+  background-color: white;
+  width: 80%;
+  height: 5px;
+
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 1S;
+}
+
+.line-1 {
+  top: 25%;
+}
+
+.line-2 {
+  top: 50%;
+}
+
+.line-3 {
+  top: 75%;
+}
+
+#ham-switch:checked+.ham-btn>.line-1 {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#ham-switch:checked+.ham-btn>.line-2 {
+  display: none;
+}
+
+#ham-switch:checked+.ham-btn>.line-3 {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+@media (max-width:720px) {
+  #ham-switch:checked~.nav-btn-all {
+    display: block;
+  }
+}

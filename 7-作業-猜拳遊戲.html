@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>猜拳遊戲</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-size: 20px;
+
+
+    }
+
+    body {
+      background-color: #BC6C25;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .background {
+      background-color: #DDA15E;
+      width: 500px;
+      height: 500px;
+      border: 2px solid black;
+      border-radius: 8px;
+
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    .btn {
+      background-color: #FEFAE0;
+      font-size: 30px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .active {
+      background-color: orangered;
+    }
+
+    #action {
+      background-color: #77966D;
+      margin-bottom: 14px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    /* ============剪刀====石頭====布============== */
+    .red {
+      background-color: #F26419;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div class="background">
+      <div class="container">
+        <button type="button" id="btn-1" class="btn">✌️</button>
+        <button type="button" id="btn-2" class="btn">✊</button>
+        <button type="button" id="btn-3" class="btn">🖐️</button>
+      </div>
+
+      <button type="button" id="action">確認出拳</button>
+
+      <div>
+        <b>👤你出:</b>
+        <span id="user-result"></span>
+      </div>
+
+      <div>
+        <b>🤖電腦出:</b>
+        <span id="computer-result"></span>
+      </div>
+
+      <div>
+        <b>🏆結果:</b>
+        <span id="result"></span>
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+
+    const btn1 = document.querySelector("#btn-1");
+    const btn2 = document.querySelector("#btn-2");
+    const btn3 = document.querySelector("#btn-3");
+    const action = document.querySelector("#action");
+    const userResult = document.querySelector("#user-result");
+    const computerResult = document.querySelector("#computer-result");
+    const finalResult = document.querySelector("#result");
+
+    let userChoice = "";
+
+    // 為每個按鈕添加點擊事件
+    btn1.addEventListener("click", function () {
+      btn1.classList.add("red");
+      btn2.classList.remove("red");
+      btn3.classList.remove("red");
+      userChoice = "✌️";
+    });
+
+    btn2.addEventListener("click", function () {
+      btn1.classList.remove("red");
+      btn2.classList.add("red");
+      btn3.classList.remove("red");
+      userChoice = "✊";
+    });
+
+    btn3.addEventListener("click", function () {
+      btn1.classList.remove("red");
+      btn2.classList.remove("red");
+      btn3.classList.add("red");
+      userChoice = "🖐️";
+    });
+
+
+    // 按下"確認出拳"
+    action.addEventListener("click", function () {
+      if (!userChoice) {
+        alert("請選擇剪刀、石頭或布！");
+        return;
+      }
+
+      const computerChoice = getComputerChoice();
+      // 電腦隨機選擇
+      function getComputerChoice() {
+        let randomNumber = Math.floor(Math.random() * 3);
+        if (randomNumber === 0) {
+          return "✌️"; // 剪刀
+        } else if (randomNumber === 1) {
+          return "✊"; // 石頭
+        } else {
+          return "🖐️"; // 布
+        }
+      }
+
+
+      // 顯示玩家與電腦的選擇
+      userResult.innerText = userChoice;
+      computerResult.innerText = computerChoice;
+
+      // 判斷勝負
+      if (userChoice === computerChoice) {
+        finalResult.innerText = "平手！";
+      } else if (
+        (userChoice === "✌️" && computerChoice === "🖐️") ||
+        (userChoice === "✊" && computerChoice === "✌️") ||
+        (userChoice === "🖐️" && computerChoice === "✊")
+      ) {
+        finalResult.innerText = "你贏了！";
+      } else {
+        finalResult.innerText = "你輸了！";
+      }
+    });
+    
+  </script>
+</body>
+
+</html>

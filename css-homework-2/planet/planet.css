@@ -1,0 +1,237 @@
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: black;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .space {
+    background-color: rgba(0, 0, 0, 0.7);
+    background-size: cover;
+    background-image: url(https://cdn.akamai.steamstatic.com/steam/apps/1332100/extras/blackhole_gif.gif?t=1664829802);
+    background-blend-mode: darken;
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .Stellar-systems {
+    width: 100vh;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .line {
+    position: absolute;
+    border: 1px dashed #ffffff;
+    border-radius: 50%;
+    animation-name: line;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes line {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .Sun {
+    /* background-color: aqua; */
+    background-image: url(https://media.giphy.com/media/OWDUUrk8fwYj6/source.gif);
+    background-size: 150%;
+    background-position: 50% 56%;
+
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation-name: sun;
+    animation-duration: 100s;
+    animation-iteration-count: infinite;
+
+  }
+
+  @keyframes sun {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .Planet {
+    background-size: cover;
+
+    border-radius: 50%;
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation-name: Planet;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes Planet {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+      transform: translate(-50%, -50%) rotate(-360deg);
+    }
+  }
+
+  .Mercurius {
+    /* background-color: blue; */
+    background-image: url(https://th.bing.com/th/id/OIP.llvLqICLkZvS7aji67JT4QHaHW?rs=1&pid=ImgDetMain);
+    background-size: 110%;
+    background-position: 30%;
+    width: 30px;
+    height: 30px;
+    animation-duration: 200s;
+  }
+
+  .line-Mercurius {
+    width: 200px;
+    height: 200px;
+    animation-duration: 5S;
+  }
+
+  .Venus {
+    /* background-color: blue; */
+    background-image: url(https://th.bing.com/th/id/R.d3aa38b40948b7ca8c7ce2873e85fe01?rik=zNKW2mwgvak68Q&riu=http%3a%2f%2fbestanimations.com%2fEarth%26Space%2fPlanets%2fvenus-planet-animation.gif&ehk=sfFPFZxASuK%2f9s%2fWYepMUXPr8%2bl0vUuoCVdxHBdff2g%3d&risl=&pid=ImgRaw&r=0);
+    width: 48px;
+    height: 48px;
+    background-position: 45%;
+    background-size: 120%;
+    animation-duration: 5s;
+  }
+
+  .line-Venus {
+    width: 290px;
+    height: 290px;
+    animation-duration: 10s;
+  }
+
+  .Earth {
+    /* background-color: blue; */
+    background-image: url(https://th.bing.com/th/id/R.72f3a789212978f1972a5bf8839a71db?rik=YB3A7Dt2VCyrgg&riu=http%3a%2f%2fi252.photobucket.com%2falbums%2fhh33%2fdrossphd%2frevolving-earth-2.gif&ehk=q9wRpZoxNq1XIYsQuXvSScBGTf0fFHt1z%2fn8Mu6UVks%3d&risl=1&pid=ImgRaw&r=0);
+
+    width: 50px;
+    height: 50px;
+
+    /* animation-duration: 5s; */
+  }
+
+  .line-E {
+    width: 400px;
+    height: 400px;
+    animation-duration: 15s;
+  }
+
+  .Moon {
+    background-image: url(https://th.bing.com/th/id/R.40951901f035d2d8aa18943d6b4164eb?rik=mbxo4GwbNwfP8A&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn20110%2f640%2fw1920h1920%2f20190711%2f0df8-hzrevpz8874899.jpg&ehk=Vf5vLU4EMRc3MVweOqf7byVYmY5fBDpuayH3XnYVxyM%3d&risl=&pid=ImgRaw&r=0);
+    width: 25px;
+    height: 25px;
+  }
+
+  .line-M {
+    width: 80px;
+    height: 80px;
+    animation-duration: 1s;
+  }
+  .Mars{
+    background-image: url(https://th.bing.com/th/id/OIP.dXpBrBo5UHNItMpfg890vQAAAA?cb=iwp1&rs=1&pid=ImgDetMain);
+    width: 40px;
+    height: 40px;
+    background-position: 20%;
+    background-size:110%;
+
+    animation-duration: 4.6s;
+  }
+  .line-Mars{
+    width: 550px;
+    height: 550px;
+
+    animation-duration: 20s;
+  }
+  .jupiter{
+    background-image: url(https://th.bing.com/th/id/R.2325f981b334ba476bffb3cb0d0f650c?rik=4iiV6SoNR8Krxw&riu=http%3a%2f%2fpic.rmb.bdstatic.com%2f2325f981b334ba476bffb3cb0d0f650c6871.gif&ehk=Z4KAQetCXv%2fgaDPWQVVLr5%2fJ%2fqH5tBZ7jIb%2fvDZgLQ0%3d&risl=&pid=ImgRaw&r=0);
+    background-size: 260%;
+    background-position: 60%;
+    width: 100px;
+    height: 100px;
+    animation-duration: 0s;
+  }
+  .line-jupiter{
+    width: 800px;
+    height: 800px;
+    animation-duration: 100s;
+  }
+  .Saturnian{
+    background-image: url(https://th.bing.com/th/id/R.67903d1c149ad86f7b88e8ded4895e08?rik=vd6ladCt6dBxmw&riu=http%3a%2f%2f5b0988e595225.cdn.sohucs.com%2fimages%2f20181219%2f57bb7a427c9f4615982cae3d0d40908c.gif&ehk=KnCz3C2xxzyn01NUOBFZN%2bnLCzndwrpSK%2bwxlkW%2bOQw%3d&risl=&pid=ImgRaw&r=0);
+    background-position: 50%;
+    width: 90px;
+    height: 90px;
+    animation-direction: 5S;
+  }
+  .line-Saturnian{
+    width: 1000px;
+    height: 1000px;
+    animation-duration: 200s;
+  }
+  .Uranus{
+    background-image: url(https://n.sinaimg.cn/astro/transform/28/w417h411/20220728/5f7f-5c13f5a8bef25940e0d173a47a2e04ab.gif);
+    width: 120px;
+    height: 120px;
+  }
+  .line-Uranus{
+    width: 1200px;
+    height: 1200px;
+    animation-duration: 250s;
+  }
+  .Neptune{
+    background-image: url(https://th.bing.com/th/id/R.a8f905795467658e75c6762684620713?rik=mrDwcMMNndnFfw&pid=ImgRaw&r=0);
+    background-position: 40%;
+    background-size: 160%;
+    width: 75px;
+    height: 75px;
+  }
+  .line-Neptune{
+    width: 1400px;
+    height: 1400px;
+    animation-duration: 300s;
+  }

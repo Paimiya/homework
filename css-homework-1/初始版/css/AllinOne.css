@@ -1,0 +1,315 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: dashed;
+}
+.ham-btn {
+        background-color: #87cdcf;
+        width: 60px;
+        height: 60px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        display: none;
+        position: relative;
+    }
+    @media (max-width:720px){
+      .ham-btn {display: block;}
+    }
+    .ham-btn:hover{
+        background-color: #6bcccf;
+    }
+    .ham-btn:active{
+        background-color: #6bcccf;
+    }
+
+    .line {
+        background-color: white;
+        width: 80%;
+        height: 5px;
+
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 1S;
+    }
+
+    .line-1 {
+        top: 25%;
+    }
+    .line-2 {
+        top: 50%;
+    }
+    .line-3 {
+        top: 75%;
+    }
+
+    #ham-switch:checked+.ham-btn>.line-1{
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    #ham-switch:checked+.ham-btn>.line-2{
+        display: none;
+    }
+
+    #ham-switch:checked+.ham-btn>.line-3{
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    @media (max-width:720px){
+      #ham-switch:checked~.nav-btn-all{
+        display: block;
+      }
+    }
+
+.nav {
+  background-color: #ACD0D1;
+  width: 320px;
+  height: 100vh;
+  float: left;
+  padding: 50px;
+}
+@media (max-width:1200px) {
+  .nav {
+    background-color: #ACD0D1;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+}
+@media (max-width:720px){
+  .nav {
+    position: relative;
+  }
+}
+
+.logo {
+  background-image: url(../DAY5-HW-02-IMG/ヨルシカlogo.jpg);
+  background-size: cover;
+  background-position: -29px 0px;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+@media (max-width:1200px) {
+  .logo {
+    background-position: -11.5px 0px;
+    width: 60px;
+    height: 60px;
+    margin: unset;
+    float: left;
+  }
+}
+@media (max-width:720px){
+  .logo {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% , -50%);
+  }
+}
+.logo:hover {
+  transition: 1s;
+  transform: scale(1.3);
+}
+@media (max-width:720px){
+  .logo:hover {
+    transform: translate(-50% , -50%) scale(1.3);
+  }
+}
+.nav-btn-all {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  display: block;
+}
+@media (max-width:1200px) {
+  .nav-btn-all {
+    width: 500px;
+    height: 60px;
+    float: right;
+  }
+}
+@media (max-width:720px){
+  .nav-btn-all {
+    background-color: #ACD0D1;
+    box-shadow:  0 4px 10px rgba(0, 0, 0, 0.25);
+    width: 180px;
+    height: auto;
+    margin: unset;
+    padding: 30px;
+    display: none;
+    position: absolute;
+    top:100px;
+    left:0;
+  }
+}
+
+.nav-btn {
+  background-color: #87cdcf;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 10px;
+  font-size: 26px;
+  text-align: center;
+  line-height: 60px;
+  border: 1px solid white;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+@media (max-width:1200px) {
+  .nav-btn {
+    width: 120px;
+    font-size: 16px;
+     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    float: right;
+    margin-left: 20px;
+  }
+}
+
+.nav-btn:hover {
+  background-color: #6bcccf;
+  transition: 0.5s;
+}
+
+.container {
+  /* background-color: aqua; */
+  background-image: url(../DAY5-HW-02-IMG/background-test.jpg);
+  background-size: cover;
+  width: calc(100% - 320px);
+  height: 100vh;
+  float: left;
+  padding-top: calc((100vh - 567px) / 2);
+}
+@media (max-width:1200px) {
+  .container {
+    width: 100%;
+    padding-top: 150px;
+  }
+}
+@media (max-width:720px){
+  .container {
+    padding-top:unset;
+    height: calc(100vh - 100px);
+  }
+}
+.content {
+  width: 957px;
+  height: 567px;
+  margin: auto;
+}
+@media (max-width:1400px) {
+  .content {
+    width: 800px;
+  }
+}
+@media (max-width:1200px) {
+  .content {
+    width: 90%;
+    height: 90%;
+  }
+}
+@media (max-width:720px){
+  .content {
+    width: 100%;
+    height: 100%;
+  }
+}
+.img {
+  background-size: cover;
+  background-position: top;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  width: calc((100% - 10px * 2) / 3);
+  height: 100%;
+  float: left;
+}
+
+@media (max-width:1400px) {
+  .img {
+    height: calc(50% - 5px);
+  }
+}
+@media (max-width:720px){
+  .img {
+    height: calc(100% / 3);
+    width: 100%;
+  }
+}
+.img:hover {
+  background-size: cover;
+  transition: 1s;
+}
+
+.img-1 {
+  background-image: url(../DAY5-HW-02-IMG/ただ君に晴れ.jpg);
+  background-position: -330px 0px;
+}
+
+.img-2 {
+  background-image: url(../DAY5-HW-02-IMG/藍二乗.jpg);
+  background-position: -480px 0px;
+  margin: 0 10px;
+}
+
+.img-3 {
+  background-image: url(../DAY5-HW-02-IMG/心に穴が空いた.jpg);
+  background-position: -550px 50%;
+}
+.img-1:hover{
+  background-image: url(../DAY5-HW-02-IMG/ただ君に晴れ-2.jpg);
+}
+@media (max-width:1400px) {
+  .img-1:hover{
+    background-position: 30%;
+  }
+}
+.img-2:hover{
+  background-image: url(../DAY5-HW-02-IMG/藍二乘-2.jpg);
+}
+.img-3:hover{
+  background-image: url(../DAY5-HW-02-IMG/心に穴が空いた-2.jpg);
+}
+@media (max-width:1400px) {
+  .img-1 {
+    background-position: 0px 30%;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .img-2 {
+    background-position: 80% 30%;
+    width: calc(50% - 5px);
+    margin: unset;
+    margin-right: 10px;
+  }
+
+  .img-3 {
+    background-position: 80% 0%;
+    width: calc(50% - 5px);
+  }
+}
+@media (max-width:720px) {
+  .img-1 {
+    margin-bottom: unset;
+  }
+
+  .img-2 {
+    width: 100%;
+    background-position: 0px 20%;
+  }
+
+  .img-3 {
+    background-position: 0px 0px;
+    width:100%;
+  }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/天氣卡.css">
+</head>
+
+<body>
+    <!-- 此作業要做CSS分離與JS分離，要做RWD -->
+    <div class="container">
+        <div class="btn-area">
+            <img src="./img/sun.png" alt="" class="sun">
+            <button type="button" class="btn">全部</button>
+            <button type="button" class="btn">北部</button>
+            <button type="button" class="btn">中部</button>
+            <button type="button" class="btn">南部</button>
+            <button type="button" class="btn">東部</button>
+            <button type="button" class="btn">離島</button>
+            <img src="./img/clound.png" alt="" class="clound">
+        </div>
+        <div class="card-region">
+            <div class="card">
+                <div class="city-info">
+                    城市: <span class="city-name"></span>
+                    天氣現象: <span class="weather-condition"></span>
+                    <span class="icon">
+                        <img class="weather-icon" src="" alt="">
+                    </span>
+                </div>
+                <div class="info">
+                    最高溫: <span class="max-temp"></span>°C<br>
+                    最低溫: <span class="min-temp"></span>°C<br>
+                    濕度: <span class="humidity"></span>%<br>
+                    時間: <span class="timestamp"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- <hr> -->
+
+
+    <script src="./JS/天氣卡.js"></script>
+
+    <!-- https://www.cwa.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/11.svg -->
+</body>
+
+</html>
+
+<!-- <img src="https://www.cwa.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/${cityData.WxCode}.svg" alt="${cityData.Wx}" title="${cityData.Wx}"> -->
+<!-- // CWA-7C520AD0-D77D-49C3-827A-8FBA26E1E014 金鑰碼 -->

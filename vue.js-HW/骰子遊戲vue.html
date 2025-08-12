@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vue 擲骰子</title>
+  <style>
+    .container {
+      display: flex;
+    }
+
+    .dice {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      border: 1px solid #000;
+      border-radius: 8px;
+    }
+
+    .red {
+      color: white;
+      background-color: red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      width: 50px;
+      height: 50px;
+      margin-bottom: 5px;
+    }
+
+    .result {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <button type="button" @click="rollDice">擲骰子</button>
+    <p>歷程結果</p>
+    <div class="result">
+      <div v-for="(round, index) in history" :key="index">
+        第{{ index + 1 }}次：
+        <span class="dice">{{ round[0] }}</span>&nbsp;
+        <span class="dice">{{ round[1] }}</span>&nbsp;
+        <span class="dice">{{ round[2] }}</span><br>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@3.4.15/dist/vue.global.prod.js"></script>
+  <script>
+    //放資料
+
+    //互動事件
+    const { createApp, ref } = Vue
+
+    createApp({
+      setup() {
+        const history = ref([])
+
+        const rollDice = () => {
+          history.value = [] 
+
+          for (let i = 0; i < 20; i++) {
+            const a = Math.floor(Math.random() * 6 + 1)
+            const b = Math.floor(Math.random() * 6 + 1)
+            const c = Math.floor(Math.random() * 6 + 1)
+
+            history.value.push([a, b, c])
+            if (a === b && b === c) break
+          }
+        }
+
+        return { history, rollDice }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>

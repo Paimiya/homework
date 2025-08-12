@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>宿舍名單 (Vue)</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        #container {
+            font-size: 18px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .room-container {
+            width: calc(100% / 3);
+            display: flex;
+            justify-content: space-between;
+            border: 2px solid black;
+            padding: 8px;
+        }
+
+        .roomer-area {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .gender-container {
+            display: flex;
+            gap: 16px;
+        }
+
+        #edit-area {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <form id="edit-area">
+            <div class="roomer-area">
+                <div>房號：<span>{{ selectedRoom?.id ?? '-' }}</span></div>
+                <div>
+                    <label>姓名：
+                        <input type="text" v-model="form.name">
+                    </label>
+                </div>
+                <div class="gender-container">
+                    <span>性別：</span>
+                    <label><input type="radio" value="男" v-model="form.gender">男</label>
+                    <label><input type="radio" value="女" v-model="form.gender">女</label>
+                    <label><input type="radio" value="其他" v-model="form.gender">其他</label>
+                </div>
+                <div>
+                    <label>手機：
+                        <input type="tel" v-model="form.phone">
+                    </label>
+                </div>
+                <div>
+                    <label>信箱：
+                        <input type="email" v-model="form.email">
+                    </label>
+                </div>
+                <div>
+                    <label>入住日期：
+                        <input type="date" v-model="form.date">
+                    </label>
+                </div>
+            </div>
+            <br>
+            <button type="button" @click="saveData">儲存</button>
+        </form>
+
+        <hr><br>
+        <h1>宿舍名單</h1>
+
+        <div id="container">
+            <article v-for="room in roomAll" :key="room.id" class="room-container">
+                <ul class="roomer-area">
+                    <li>房號：{{ room.id }}</li>
+                    <li>姓名：{{ room.name }}</li>
+                    <li>性別：{{ room.gender }}</li>
+                    <li>手機：{{ room.phone }}</li>
+                    <li>信箱：{{ room.email }}</li>
+                    <li>入住日期：{{ room.date }}</li>
+                </ul>
+                <div>
+                    <button @click="editRoom(room)">編輯</button>
+                    <button @click="clearRoom(room)">清空</button>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    roomAll: Array.from({ length: 10 }, (_, i) => ({
+                        id: 101 + i,
+                        name: '',
+                        gender: '',
+                        phone: '',
+                        email: '',
+                        date: ''
+                    })),
+                    selectedRoom: null,
+                    form: {
+                        name: '',
+                        gender: '',
+                        phone: '',
+                        email: '',
+                        date: ''
+                    }
+                };
+            },
+            methods: {
+                editRoom(room) {
+                    this.selectedRoom = room;
+                    this.form = { ...room }; 
+                },
+                saveData() {
+                    if (!this.selectedRoom) {
+                        alert("請先選擇房間");
+                        return;
+                    }
+                    Object.assign(this.selectedRoom, this.form);
+                    this.clearForm();
+                },
+                clearRoom(room) {
+                    Object.assign(room, {
+                        name: '', gender: '', phone: '', email: '', date: ''
+                    });
+                    if (this.selectedRoom?.id === room.id) this.clearForm();
+                },
+                clearForm() {
+                    this.selectedRoom = null;
+                    this.form = { name: '', gender: '', phone: '', email: '', date: '' };
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>

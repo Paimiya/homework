@@ -1,0 +1,212 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes loading {
+  100% {
+    width: 230px;
+  }
+}
+@keyframes line {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.box:hover {
+  background-image: url(./img/拉圖斯.gif);
+  background-size: 80%;
+  background-position: 20% 130%;
+  background-repeat: no-repeat;
+  width: 368px;
+  height: 200px;
+}
+
+.box:hover .Word {
+  opacity: 0;
+}
+
+.container {
+  background-color: black;
+  background-image: url(./img/背景.png);
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .box {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* 設定5個球不同的初始角度 */
+}
+.container .box .ball {
+  animation: orbit 5s linear infinite;
+  position: absolute;
+}
+.container .box .ball-2 {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  background-image: url(./img/甲蟲.gif);
+  background-size: cover;
+  width: 85px;
+  height: 92px;
+}
+.container .box .ball-1 {
+  background-image: url(./img/怪鳥.gif);
+  width: 175px;
+  height: 75px;
+}
+.container .box .ball-3 {
+  background-image: url(./img/沙丁魚.gif);
+  width: 75px;
+  height: 80px;
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(180px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(180px) rotate(-360deg);
+  }
+}
+.container .box .ball-1:nth-child(1) {
+  animation-delay: 0s;
+}
+.container .box .ball-2:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.container .box .ball-3:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.container .Word {
+  color: white;
+  font-family: Comic Sans MS;
+  font-size: 24px;
+  text-shadow: 3px 3px 3px black;
+}
+.container h1 {
+  width: 0;
+  overflow: hidden;
+  animation: loading 1.5s linear 0s infinite;
+}
+
+.bear {
+  background-image: url(./img/熊站.gif);
+  background-size: 90%;
+  background-repeat: no-repeat;
+  width: 130.5px;
+  height: 160px;
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  transform: scaleX(-1);
+}
+
+.bear:hover {
+  background-image: url(./img/玩具熊\(攻擊\).gif);
+  background-size: 100%;
+  background-position: 0% 20px;
+  width: 700px;
+  height: 300px;
+  left: -25px;
+  bottom: 0px;
+}
+
+.lion {
+  background-image: url(./img/獅王娃娃.gif);
+  background-size: 100%;
+  width: 128px;
+  height: 157px;
+  position: absolute;
+  bottom: 25px;
+  left: 250px;
+}
+
+.lion:hover {
+  background-image: url(./img/獅王娃娃臭臉.gif);
+  background-size: cover;
+  width: 128px;
+  height: 157px;
+}
+
+.Pikachu {
+  background-image: url(./img/皮卡啾\(站\).gif);
+  background-size: cover;
+  width: 120px;
+  height: 90px;
+  position: absolute;
+  bottom: 25px;
+  left: 400px;
+}
+
+.Pikachu:hover {
+  background-image: url(./img/皮卡啾\(跳\).gif);
+  background-size: cover;
+  width: 120px;
+  height: 140px;
+}
+
+.mushroom {
+  background-image: url(./img/菇菇寶貝.gif);
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  bottom: 25px;
+  animation: murshroom 10s linear infinite;
+}
+
+@keyframes murshroom {
+  0% {
+    transform: translateX(0) scaleX(-1);
+  } /* 初始位置，方向正常 */
+  49.9% {
+    transform: translateX(349px) scaleX(-1);
+  } /* 接近右邊，方向正常 */
+  50% {
+    transform: translateX(350px) scaleX(1);
+  } /* 瞬間翻轉 */
+  100% {
+    transform: translateX(0) scaleX(1);
+  } /* 回程方向相反 */
+}
+.fat {
+  background-image: url(./img/肥肥.gif);
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  bottom: 25px;
+  animation: fat 5s linear infinite;
+}
+
+@keyframes fat {
+  0% {
+    transform: translateX(0) scaleX(-1);
+  } /* 初始位置，方向正常 */
+  49.9% {
+    transform: translateX(349px) scaleX(-1);
+  } /* 接近右邊，方向正常 */
+  50% {
+    transform: translateX(350px) scaleX(1);
+  } /* 瞬間翻轉 */
+  100% {
+    transform: translateX(0) scaleX(1);
+  } /* 回程方向相反 */
+}/*# sourceMappingURL=loading-HW.css.map */

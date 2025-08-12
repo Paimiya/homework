@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>猜拳遊戲</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-size: 20px;
+    }
+
+    body {
+      background-color: #BC6C25;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .background {
+      background-color: #DDA15E;
+      width: 500px;
+      height: 500px;
+      border: 2px solid black;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn {
+      background-color: #FEFAE0;
+      font-size: 30px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .red {
+      background-color: #F26419;
+    }
+
+    #action {
+      background-color: #77966D;
+      margin-bottom: 14px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="app">
+    <div class="background">
+      <div class="container">
+        <button
+          type="button"
+          class="btn"
+          :class="{ red: userChoice === '✌️' }"
+          @click="userChoice = '✌️'"
+        >✌️</button>
+        <button
+          type="button"
+          class="btn"
+          :class="{ red: userChoice === '✊' }"
+          @click="userChoice = '✊'"
+        >✊</button>
+        <button
+          type="button"
+          class="btn"
+          :class="{ red: userChoice === '🖐️' }"
+          @click="userChoice = '🖐️'"
+        >🖐️</button>
+      </div>
+
+      <button type="button" id="action" @click="play">確認出拳</button>
+
+      <div>
+        <b>👤你出:</b> <span id="user-result">{{ userChoice }}</span>
+      </div>
+      <div>
+        <b>🤖電腦出:</b> <span id="computer-result">{{ computerChoice }}</span>
+      </div>
+      <div>
+        <b>🏆結果:</b> <span id="result">{{ result }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@3.4.15/dist/vue.global.prod.js"></script>
+  <script>
+    const { createApp, ref } = Vue
+
+    createApp({
+      setup() {
+        const userChoice = ref('')
+        const computerChoice = ref('')
+        const result = ref('')
+
+        const play = () => {
+          if (!userChoice.value) {
+            alert('請選擇剪刀、石頭或布！')
+            return
+          }
+
+          const choices = ['✌️', '✊', '🖐️']
+          computerChoice.value = choices[Math.floor(Math.random() * 3)]
+
+          if (userChoice.value === computerChoice.value) {
+            result.value = '平手！'
+          } else if (
+            (userChoice.value === '✌️' && computerChoice.value === '🖐️') ||
+            (userChoice.value === '✊' && computerChoice.value === '✌️') ||
+            (userChoice.value === '🖐️' && computerChoice.value === '✊')
+          ) {
+            result.value = '你贏了！'
+          } else {
+            result.value = '你輸了！'
+          }
+        }
+
+        return { userChoice, computerChoice, result, play }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>
